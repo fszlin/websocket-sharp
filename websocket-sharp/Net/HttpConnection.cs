@@ -53,6 +53,10 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
+#if UNITY
+using SslStream35;
+#endif
+
 namespace WebSocketSharp.Net
 {
   internal sealed class HttpConnection
@@ -93,6 +97,11 @@ namespace WebSocketSharp.Net
 
       var netStream = new NetworkStream (socket, false);
       if (_secure) {
+#if UNITY
+                var sslStream = new TlsStream(netStream, false);
+                sslStream.Connect();
+                _stream = sslStream;
+#else
         var conf = listener.SslConfiguration;
         var sslStream = new SslStream (netStream, false, conf.ClientCertificateValidationCallback);
         sslStream.AuthenticateAsServer (
@@ -102,8 +111,9 @@ namespace WebSocketSharp.Net
           conf.CheckCertificateRevocation);
 
         _stream = sslStream;
-      }
-      else {
+#endif
+            }
+            else {
         _stream = netStream;
       }
 
@@ -114,9 +124,9 @@ namespace WebSocketSharp.Net
       init ();
     }
 
-    #endregion
+#endregion
 
-    #region Public Properties
+#region Public Properties
 
     public bool IsClosed {
       get {
@@ -164,9 +174,9 @@ namespace WebSocketSharp.Net
       }
     }
 
-    #endregion
+#endregion
 
-    #region Private Methods
+#region Private Methods
 
     private void close ()
     {
@@ -405,9 +415,9 @@ namespace WebSocketSharp.Net
       _contextBound = false;
     }
 
-    #endregion
+#endregion
 
-    #region Internal Methods
+#region Internal Methods
 
     internal void Close (bool force)
     {
@@ -439,9 +449,9 @@ namespace WebSocketSharp.Net
       }
     }
 
-    #endregion
+#endregion
 
-    #region Public Methods
+#region Public Methods
 
     public void BeginReadRequest ()
     {
@@ -549,6 +559,6 @@ namespace WebSocketSharp.Net
       }
     }
 
-    #endregion
+#endregion
   }
 }

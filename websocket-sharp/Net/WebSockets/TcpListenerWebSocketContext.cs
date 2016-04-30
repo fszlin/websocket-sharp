@@ -43,6 +43,10 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.Text;
 
+#if UNITY
+using SslStream35;
+#endif
+
 namespace WebSocketSharp.Net.WebSockets
 {
   /// <summary>
@@ -81,8 +85,13 @@ namespace WebSocketSharp.Net.WebSockets
 
       var netStream = tcpClient.GetStream ();
       if (secure) {
+#if UNITY
+                var sslStream = new TlsStream(netStream, false);
+                sslStream.Connect();
+                _stream = sslStream;
+#else
         var sslStream = new SslStream (
-          netStream, false, sslConfig.ClientCertificateValidationCallback);
+                netStream, false, sslConfig.ClientCertificateValidationCallback);
 
         sslStream.AuthenticateAsServer (
           sslConfig.ServerCertificate,
@@ -91,6 +100,7 @@ namespace WebSocketSharp.Net.WebSockets
           sslConfig.CheckCertificateRevocation);
 
         _stream = sslStream;
+#endif
       }
       else {
         _stream = netStream;
@@ -103,9 +113,9 @@ namespace WebSocketSharp.Net.WebSockets
       _websocket = new WebSocket (this, protocol);
     }
 
-    #endregion
+#endregion
 
-    #region Internal Properties
+#region Internal Properties
 
     internal string HttpMethod {
       get {
@@ -125,9 +135,9 @@ namespace WebSocketSharp.Net.WebSockets
       }
     }
 
-    #endregion
+#endregion
 
-    #region Public Properties
+#region Public Properties
 
     /// <summary>
     /// Gets the HTTP cookies included in the request.
@@ -351,9 +361,9 @@ namespace WebSocketSharp.Net.WebSockets
       }
     }
 
-    #endregion
+#endregion
 
-    #region Internal Methods
+#region Internal Methods
 
     internal void Close ()
     {
@@ -378,9 +388,9 @@ namespace WebSocketSharp.Net.WebSockets
       _user = value;
     }
 
-    #endregion
+#endregion
 
-    #region Public Methods
+#region Public Methods
 
     /// <summary>
     /// Returns a <see cref="string"/> that represents the current
@@ -395,6 +405,6 @@ namespace WebSocketSharp.Net.WebSockets
       return _request.ToString ();
     }
 
-    #endregion
+#endregion
   }
 }

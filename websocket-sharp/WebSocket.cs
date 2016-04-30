@@ -55,6 +55,10 @@ using System.Threading;
 using WebSocketSharp.Net;
 using WebSocketSharp.Net.WebSockets;
 
+#if UNITY
+using SslStream35;
+#endif
+
 namespace WebSocketSharp
 {
   /// <summary>
@@ -1710,6 +1714,12 @@ namespace WebSocketSharp
             CloseStatusCode.TlsHandshakeFailure, "An invalid host name is specified.");
 
         try {
+
+#if UNITY
+                    var sslStream = new TlsStream(_stream, false);
+                    sslStream.Connect();
+                    _stream = sslStream;
+#else
           var sslStream = new SslStream (
             _stream,
             false,
@@ -1723,6 +1733,7 @@ namespace WebSocketSharp
             conf.CheckCertificateRevocation);
 
           _stream = sslStream;
+#endif
         }
         catch (Exception ex) {
           throw new WebSocketException (CloseStatusCode.TlsHandshakeFailure, ex);
