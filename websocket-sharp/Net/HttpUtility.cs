@@ -600,7 +600,7 @@ namespace WebSocketSharp.Net
 
       return null;
     }
-
+#if !CLIENT_ONLY
     internal static NameValueCollection InternalParseQueryString (string query, Encoding encoding)
     {
       int len;
@@ -629,8 +629,9 @@ namespace WebSocketSharp.Net
 
       return res;
     }
-
-    internal static string InternalUrlDecode (
+        
+#endif
+        internal static string InternalUrlDecode (
       byte[] bytes, int offset, int count, Encoding encoding)
     {
       var output = new StringBuilder ();
@@ -973,7 +974,7 @@ namespace WebSocketSharp.Net
 
       output.Write (HtmlEncode (s));
     }
-
+#if !CLIENT_ONLY
     public static NameValueCollection ParseQueryString (string query)
     {
       return ParseQueryString (query, Encoding.UTF8);
@@ -986,8 +987,9 @@ namespace WebSocketSharp.Net
 
       return InternalParseQueryString (query, encoding ?? Encoding.UTF8);
     }
+#endif
 
-    public static string UrlDecode (string s)
+        public static string UrlDecode (string s)
     {
       return UrlDecode (s, Encoding.UTF8);
     }

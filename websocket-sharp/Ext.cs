@@ -229,6 +229,7 @@ namespace WebSocketSharp
 
       return true;
     }
+#if !CLIENT_ONLY
 
     internal static void Close (this HttpListenerResponse response, HttpStatusCode code)
     {
@@ -242,7 +243,7 @@ namespace WebSocketSharp
       response.Headers.InternalSet ("WWW-Authenticate", challenge, true);
       response.Close (HttpStatusCode.Unauthorized);
     }
-
+#endif
     internal static byte[] Compress (this byte[] data, CompressionMethod method)
     {
       return method == CompressionMethod.Deflate
@@ -490,6 +491,7 @@ namespace WebSocketSharp
       var val = nameAndValue.Substring (idx + 1).Trim ();
       return unquote ? val.Unquote () : val;
     }
+#if !CLIENT_ONLY
 
     internal static TcpListenerWebSocketContext GetWebSocketContext (
       this TcpClient tcpClient,
@@ -500,7 +502,7 @@ namespace WebSocketSharp
     {
       return new TcpListenerWebSocketContext (tcpClient, protocol, secure, sslConfig, logger);
     }
-
+#endif
     internal static byte[] InternalToByteArray (this ushort value, ByteOrder order)
     {
       var bytes = BitConverter.GetBytes (value);
@@ -1361,6 +1363,7 @@ namespace WebSocketSharp
 
       return (c == 'g' && value == "gopher") || (c == 'm' && value == "mailto");
     }
+#if !CLIENT_ONLY
 
     /// <summary>
     /// Determines whether the specified <see cref="HttpListenerRequest"/> is
@@ -1404,7 +1407,7 @@ namespace WebSocketSharp
       return request.Headers.Contains ("Upgrade", protocol) &&
              request.Headers.Contains ("Connection", "Upgrade");
     }
-
+#endif
     /// <summary>
     /// Determines whether the specified <see cref="string"/> is a URI string.
     /// </summary>
@@ -1858,6 +1861,7 @@ namespace WebSocketSharp
     {
       return value != null && value.Length > 0 ? HttpUtility.UrlEncode (value) : value;
     }
+#if !CLIENT_ONLY
 
     /// <summary>
     /// Writes and sends the specified <paramref name="content"/> data with the specified
@@ -1904,7 +1908,7 @@ namespace WebSocketSharp
 
       output.Close ();
     }
-
+#endif
 #endregion
   }
 }

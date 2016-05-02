@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLIENT_ONLY; UNITY</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CLIENT_ONLY;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -30,14 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SslStream35, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SslStream35.Unity.1.0.0-beta0\lib\net35\SslStream35.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -106,15 +98,6 @@
     <Compile Include="..\websocket-sharp\Net\AuthenticationSchemes.cs">
       <Link>Net\AuthenticationSchemes.cs</Link>
     </Compile>
-    <Compile Include="..\websocket-sharp\Net\Chunk.cs">
-      <Link>Net\Chunk.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\ChunkedRequestStream.cs">
-      <Link>Net\ChunkedRequestStream.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\ChunkStream.cs">
-      <Link>Net\ChunkStream.cs</Link>
-    </Compile>
     <Compile Include="..\websocket-sharp\Net\ClientSslConfiguration.cs">
       <Link>Net\ClientSslConfiguration.cs</Link>
     </Compile>
@@ -127,17 +110,8 @@
     <Compile Include="..\websocket-sharp\Net\CookieException.cs">
       <Link>Net\CookieException.cs</Link>
     </Compile>
-    <Compile Include="..\websocket-sharp\Net\EndPointListener.cs">
-      <Link>Net\EndPointListener.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\EndPointManager.cs">
-      <Link>Net\EndPointManager.cs</Link>
-    </Compile>
     <Compile Include="..\websocket-sharp\Net\HttpBasicIdentity.cs">
       <Link>Net\HttpBasicIdentity.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\HttpConnection.cs">
-      <Link>Net\HttpConnection.cs</Link>
     </Compile>
     <Compile Include="..\websocket-sharp\Net\HttpDigestIdentity.cs">
       <Link>Net\HttpDigestIdentity.cs</Link>
@@ -148,30 +122,6 @@
     <Compile Include="..\websocket-sharp\Net\HttpHeaderType.cs">
       <Link>Net\HttpHeaderType.cs</Link>
     </Compile>
-    <Compile Include="..\websocket-sharp\Net\HttpListener.cs">
-      <Link>Net\HttpListener.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\HttpListenerAsyncResult.cs">
-      <Link>Net\HttpListenerAsyncResult.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\HttpListenerContext.cs">
-      <Link>Net\HttpListenerContext.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\HttpListenerException.cs">
-      <Link>Net\HttpListenerException.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\HttpListenerPrefix.cs">
-      <Link>Net\HttpListenerPrefix.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\HttpListenerPrefixCollection.cs">
-      <Link>Net\HttpListenerPrefixCollection.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\HttpListenerRequest.cs">
-      <Link>Net\HttpListenerRequest.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\HttpListenerResponse.cs">
-      <Link>Net\HttpListenerResponse.cs</Link>
-    </Compile>
     <Compile Include="..\websocket-sharp\Net\HttpRequestHeader.cs">
       <Link>Net\HttpRequestHeader.cs</Link>
     </Compile>
@@ -181,23 +131,11 @@
     <Compile Include="..\websocket-sharp\Net\HttpStatusCode.cs">
       <Link>Net\HttpStatusCode.cs</Link>
     </Compile>
-    <Compile Include="..\websocket-sharp\Net\HttpStreamAsyncResult.cs">
-      <Link>Net\HttpStreamAsyncResult.cs</Link>
-    </Compile>
     <Compile Include="..\websocket-sharp\Net\HttpUtility.cs">
       <Link>Net\HttpUtility.cs</Link>
     </Compile>
     <Compile Include="..\websocket-sharp\Net\HttpVersion.cs">
       <Link>Net\HttpVersion.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\InputChunkState.cs">
-      <Link>Net\InputChunkState.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\InputState.cs">
-      <Link>Net\InputState.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\LineState.cs">
-      <Link>Net\LineState.cs</Link>
     </Compile>
     <Compile Include="..\websocket-sharp\Net\NetworkCredential.cs">
       <Link>Net\NetworkCredential.cs</Link>
@@ -205,29 +143,11 @@
     <Compile Include="..\websocket-sharp\Net\QueryStringCollection.cs">
       <Link>Net\QueryStringCollection.cs</Link>
     </Compile>
-    <Compile Include="..\websocket-sharp\Net\ReadBufferState.cs">
-      <Link>Net\ReadBufferState.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\RequestStream.cs">
-      <Link>Net\RequestStream.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\ResponseStream.cs">
-      <Link>Net\ResponseStream.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\ServerSslConfiguration.cs">
-      <Link>Net\ServerSslConfiguration.cs</Link>
-    </Compile>
     <Compile Include="..\websocket-sharp\Net\SslConfiguration.cs">
       <Link>Net\SslConfiguration.cs</Link>
     </Compile>
     <Compile Include="..\websocket-sharp\Net\WebHeaderCollection.cs">
       <Link>Net\WebHeaderCollection.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\WebSockets\HttpListenerWebSocketContext.cs">
-      <Link>Net\WebSockets\HttpListenerWebSocketContext.cs</Link>
-    </Compile>
-    <Compile Include="..\websocket-sharp\Net\WebSockets\TcpListenerWebSocketContext.cs">
-      <Link>Net\WebSockets\TcpListenerWebSocketContext.cs</Link>
     </Compile>
     <Compile Include="..\websocket-sharp\Net\WebSockets\WebSocketContext.cs">
       <Link>Net\WebSockets\WebSocketContext.cs</Link>
@@ -253,9 +173,6 @@
     <Compile Include="..\websocket-sharp\WebSocketState.cs">
       <Link>WebSocketState.cs</Link>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

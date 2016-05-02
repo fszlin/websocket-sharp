@@ -159,7 +159,7 @@ namespace WebSocketSharp
     #endregion
 
     #region Internal Constructors
-
+#if !CLIENT_ONLY
     // As server
     internal WebSocket (HttpListenerWebSocketContext context, string protocol)
     {
@@ -192,6 +192,7 @@ namespace WebSocketSharp
       init ();
     }
 
+#endif
     #endregion
 
     #region Public Constructors
@@ -456,7 +457,7 @@ namespace WebSocketSharp
         return _logger;
       }
 
-      internal set {
+      set {
         _logger = value;
       }
     }
