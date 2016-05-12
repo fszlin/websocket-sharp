@@ -615,6 +615,8 @@ namespace WebSocketSharp
       }
     }
 
+        public Dictionary<string, string> Headers { get; } = new Dictionary<string, string>();
+
     #endregion
 
     #region Public Events
@@ -1045,6 +1047,11 @@ namespace WebSocketSharp
 
       if (_cookies.Count > 0)
         ret.SetCookies (_cookies);
+
+            foreach (var customHeader in this.Headers)
+            {
+                headers.Add(customHeader.Key, customHeader.Value);
+            }
 
       return ret;
     }
